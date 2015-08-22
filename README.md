@@ -30,3 +30,13 @@ To simply use the library
 ...
 
 ```
+
+If you do not want the "cl" prefix in front of the types names, define CL_MATH_NO_PREFIX
+
+```c
+#define CL_MATH_NO_PREFIX
+#include "cl_math.h"
+
+...
+
+```

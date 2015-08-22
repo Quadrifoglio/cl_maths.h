@@ -27,6 +27,14 @@ typedef struct {
 	float m41, m42, m43, m44;
 } cl_mat4;
 
+#ifdef CL_MATH_NO_PREFIX
+
+typedef cl_v2 v2;
+typedef cl_v3 v3;
+typedef cl_mat4 mat4;
+
+#endif
+
 cl_v2 clV2Add(cl_v2 v, cl_v2 vv);
 cl_v2 clV2Multiplyf(cl_v2 v, float k);
 
