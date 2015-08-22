@@ -13,17 +13,12 @@
 typedef struct {
 	float x, y;
 
-} v2;
+} cl_v2;
 
 typedef struct {
 	float x, y, z;
 
-} v3;
-
-typedef struct {
-	float r, g, b, a;
-
-} c4;
+} cl_v3;
 
 typedef struct {
 	float m11, m12, m13, m14;
@@ -32,8 +27,8 @@ typedef struct {
 	float m41, m42, m43, m44;
 } cl_mat4;
 
-v2 clV2Add(v2 v, v2 vv);
-v2 clV2Multiplyf(v2 v, float k);
+cl_v2 clV2Add(cl_v2 v, cl_v2 vv);
+cl_v2 clV2Multiplyf(cl_v2 v, float k);
 
 cl_mat4 clMat4Null();
 cl_mat4 clMat4Identity();
@@ -41,10 +36,10 @@ cl_mat4 clMat4Multiply(cl_mat4* m1, cl_mat4* m2);
 
 cl_mat4 clMat4OrthoProjection(float left, float right, float bot, float top, float zNear, float zFar);
 
-cl_mat4 clMat4Translate2(v2 v);
-cl_mat4 clMat4Translate3(v3 v);
-cl_mat4 clMat4Scale2(v2 v);
-cl_mat4 clMat4Scale3(v3 v);
+cl_mat4 clMat4Translate2(cl_v2 v);
+cl_mat4 clMat4Translate3(cl_v3 v);
+cl_mat4 clMat4Scale2(cl_v2 v);
+cl_mat4 clMat4Scale3(cl_v3 v);
 cl_mat4 clMat4RotateX(float angle);
 cl_mat4 clMat4RotateY(float angle);
 cl_mat4 clMat4RotateZ(float angle);
@@ -62,12 +57,12 @@ void clMat4Print(cl_mat4* mat);
 #include <stdio.h>
 #include <math.h>
 
-v2 clV2Add(v2 v, v2 vv) {
-	return (v2){v.x + vv.x, v.y + vv.y};
+cl_v2 clV2Add(cl_v2 v, cl_v2 vv) {
+	return (cl_v2){v.x + vv.x, v.y + vv.y};
 }
 
-v2 clV2Multiplyf(v2 v, float k) {
-	return (v2){v.x * k, v.y * k};
+cl_v2 clV2Multiplyf(cl_v2 v, float k) {
+	return (cl_v2){v.x * k, v.y * k};
 }
 
 cl_mat4 clMat4Null() {
@@ -126,7 +121,7 @@ cl_mat4 clMat4OrthoProjection(float left, float right, float bot, float top, flo
 	return mat;
 }
 
-cl_mat4 clMat4Translate2(v2 v) {
+cl_mat4 clMat4Translate2(cl_v2 v) {
 	cl_mat4 res = clMat4Identity();
 
 	res.m14 = v.x;
@@ -137,7 +132,7 @@ cl_mat4 clMat4Translate2(v2 v) {
 	return res;
 }
 
-cl_mat4 clMat4Transalte3(v3 v) {
+cl_mat4 clMat4Transalte3(cl_v3 v) {
 	cl_mat4 res = clMat4Identity();
 
 	res.m14 = v.x;
@@ -148,7 +143,7 @@ cl_mat4 clMat4Transalte3(v3 v) {
 	return res;
 }
 
-cl_mat4 clMat4Scale2(v2 v) {
+cl_mat4 clMat4Scale2(cl_v2 v) {
 	cl_mat4 res = clMat4Null();
 
 	res.m11 = v.x;
@@ -159,7 +154,7 @@ cl_mat4 clMat4Scale2(v2 v) {
 	return res;
 }
 
-cl_mat4 clMat4Scale3(v3 v) {
+cl_mat4 clMat4Scale3(cl_v3 v) {
 	cl_mat4 res = clMat4Null();
 
 	res.m11 = v.x;
